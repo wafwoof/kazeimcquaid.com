@@ -8,6 +8,9 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script>
         // AFRAME computer component
+        document.SCREEN_BUFFER = [];
+        let placeholder_black_frame = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wYAAsQB8mRIF3cAAAAASUVORK5CYII==';
+
         AFRAME.registerComponent('virtual-computer', {
             schema: {type: 'boolean'},
             init: () => {
@@ -16,44 +19,43 @@
                 // set the monitor color to bright white
                 computer.addEventListener('model-loaded', () => {
                     const screen_mesh = computer.getObject3D('mesh').children[0].children[0].children[0].children[1].children[0];
-                    //console.log("screen_mesh", screen_mesh);
-                    // modify the texture of the screen
+                    screen_mesh.material.emissive = new THREE.Color(0.5, 0.5, 0.5);
+                    const texture_loader = new THREE.TextureLoader()
                     function updateScreenTexture() {
-                        if (!document.SCREEN_BUFFER) {
-                            // make screen black
-                            document.SCREEN_BUFFER = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wYAAsQB8mRIF3cAAAAASUVORK5CYII==';
+                        // get the latest screenshot and then remove it from the buffer
+                        if (document.SCREEN_BUFFER.length >= 8) {
+                            document.SCREEN_BUFFER.shift();
                         }
-                        const texture = new THREE.TextureLoader().load(document.SCREEN_BUFFER);
-                        //console.log("debugging the texture", texture);
-                        texture.wrapS = THREE.RepeatWrapping;
-                        texture.wrapT = THREE.RepeatWrapping;
-                        texture.repeat.set(1.1, 1);
-                        texture.offset.set(0.91, 0.2);
-                        // make the screen reflect light
-                        screen_mesh.material.map = texture;
-                        // make the screen emit light
-                        screen_mesh.material.emissiveMap = texture;
-                        screen_mesh.material.emissive = new THREE.Color(0.8, 0.8, 0.8);
+                        let screenshot = document.SCREEN_BUFFER.shift();
+                        if (screenshot === undefined) {
+                            screenshot = placeholder_black_frame;
+                        }
+                        // create a new texture from the screenshot
+                        const new_texture = texture_loader.load(screenshot);
+                        new_texture.wrapS = THREE.RepeatWrapping;
+                        //texture.wrapT = THREE.RepeatWrapping;       
+                        new_texture.repeat.set(1.1, 1);
+                        new_texture.offset.set(0.91, 0.19);
+                        // make the screen reflect/emit light
+                        screen_mesh.material.map = new_texture;
+                        screen_mesh.material.emissiveMap = new_texture;
                     }
                     updateScreenTexture();
                     setInterval(() => {
                         updateScreenTexture();
-                    }, 200);
+                    }, 180);
                 });
-
                 // listen for left-control keypress to toggle wasd on/off
-                let wasd_controls = false;
+                let wasd_enabled = false;
                 document.addEventListener('keydown', (event) => {
                     if (event.code === 'ControlLeft') {
                         if (wasd_controls) {
-                            console.log("removing wasd controls")
                             document.querySelectorAll('[wasd-controls]')[0].removeAttribute('wasd-controls');
-                            wasd_controls = false;
+                            wasd_enabled = false;
                         } 
                         else if (!wasd_controls) {
-                            console.log("adding wasd controls");
                             document.querySelectorAll('[camera]')[0].setAttribute('wasd-controls', 'acceleration: 8');
-                            wasd_controls = true;
+                            wasd_enabled = true;
                         }
                     }
                 });
@@ -74,19 +76,20 @@
         const terminal_window = document.querySelectorAll('.term')[0];
         domtoimage.toPng(terminal_window, { bgcolor: '#000000', quality: 0.9 })
         .then((dataUrl) => {
-            document.SCREEN_BUFFER = dataUrl;
+            //document.SCREEN_BUFFER = dataUrl;
+            document.SCREEN_BUFFER.push(dataUrl);
         })
         .catch((error) => {
-            console.error('oops, something went wrong!', error);
+            console.error("FUNCTION getScreenshot() IN index.html IS CREATING AN ERROR", error);
         });
     }
-    
     setInterval(() => {
         getScreenshot();
-    }, 200);
+        //console.log(document.SCREEN_BUFFER.length);
+    }, 100);
     </script>
 
-    <a-scene loading-screen="dotsColor: white; backgroundColor: black">
+    <a-scene loading-screen="dotsColor: white; backgroundColor: black" allowfullscreen="no">
         <a-entity id="camera" camera look-controls="pointerLockEnabled: true" position="0 1.3 0"></a-entity>
 
         <a-assets>
@@ -95,7 +98,7 @@
 
         <a-entity virtual-computer="true" gltf-model="#crt_monitor" scale="1.1 1.1 1.1" position="0 1.25 -0.75"></a-entity>
         <a-box position="0 0.5 -0.75" rotation="0 0 0" color="#aaaaaa"></a-box>
-        <a-sky color="#ECECEC"></a-sky>
+        <a-sky color="#aaaaaa"></a-sky>
         <a-light type="ambient" color="#888"></a-light>
     </a-scene>
 </body>

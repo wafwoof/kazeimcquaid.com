@@ -525,10 +525,10 @@ function start_vm(user, pwd)
     cmdline = params["cmdline"] || "";
     cols = (params["cols"] | 0) || 80;
     rows = (params["rows"] | 0) || 30;
-    font_size = (params["font_size"] | 0) || 15;
+    font_size = (params["font_size"] | 0) || 14;
     guest_url = params["guest_url"] || "";
-    width = (params["w"] | 0) || 1024;
-    height = (params["h"] | 0) || 640;
+    width = (params["w"] | 0) || 400;
+    height = (params["h"] | 0) || 400;
     graphic_enable = params["graphic"] | 0;
     net_url = params["net_url"] || ""; /* empty string means no network */
     if (typeof net_url == "undefined")
@@ -547,14 +547,14 @@ function start_vm(user, pwd)
         width = 0;
         height = 0;
         /* start the terminal */
-        cols = 20;
-        rows = 13;
+        cols = 25;
+        rows = 15;
         console.log("cols=" + cols + " rows=" + rows);
         term = new Term(cols, rows, term_handler, 10000);
         term.open(document.getElementById("term_container"),
                   document.getElementById("term_paste"));
         term.term_el.style.fontSize = font_size + "px";
-        term.write("\nWelcome to Kazei.com\r\n\nBuilt with AFRAME + three.js + jslinux. (yes, this is a real computer) Press the [ctrl] key to walk around!\r\n\nRun 'help | less'\r\nto get started.\r\n\n");
+        term.write("+-+-+-+-+-+-+-+-+-+-+-+-+\r\n\nKazei McQuaid :)\r\nFullstack Developer\r\n-> kazmcquaid@gmail.com\r\n-> github.com/wafwoof\r\n\n(yes, this is a real comp-uter) Press the [ctrl]  key to walk around!\r\n\nRun 'uname -a'\r\nto get started.\r\n\n");
     }
 
 //    console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);
