@@ -521,7 +521,7 @@ function start_vm(user, pwd)
             url = "root-riscv64.cfg";
     }
     url = get_absolute_url(url);
-    mem_size = (params["mem"] | 0) || 128; /* in mb */
+    mem_size = (params["mem"] | 0) || 120; /* in mb */
     cmdline = params["cmdline"] || "";
     cols = (params["cols"] | 0) || 80;
     rows = (params["rows"] | 0) || 30;
@@ -557,7 +557,7 @@ function start_vm(user, pwd)
         term.write("+-+-+-+-+-+-+-+-+-+-+-+-+\r\n\nKazei McQuaid :)\r\nFullstack Developer\r\n-> kazmcquaid@gmail.com\r\n-> github.com/wafwoof\r\n\n(yes, this is a real comp-uter) Press the [ctrl]  key to walk around!\r\n\nRun 'uname -a'\r\nto get started.\r\n\n");
     }
 
-//    console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);
+console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);
 
     switch(cpu) {
     case "x86":
