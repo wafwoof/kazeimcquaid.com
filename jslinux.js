@@ -512,7 +512,7 @@ function start_vm(user, pwd)
     /* read the parameters */
 
     params = get_params();
-    cpu = params["cpu"] || "riscv64";
+    cpu = params["cpu"] || "x86";
     url = params["url"];
     if (!url) {
         if (cpu == "x86")
@@ -547,11 +547,14 @@ function start_vm(user, pwd)
         width = 0;
         height = 0;
         /* start the terminal */
+        cols = 20;
+        rows = 13;
+        console.log("cols=" + cols + " rows=" + rows);
         term = new Term(cols, rows, term_handler, 10000);
         term.open(document.getElementById("term_container"),
                   document.getElementById("term_paste"));
         term.term_el.style.fontSize = font_size + "px";
-        //term.write("Loading...\r\n");
+        term.write("\nWelcome to Kazei.com\r\n\nBuilt with AFRAME + three.js + jslinux. (yes, this is a real computer) Press the [ctrl] key to walk around!\r\n\nRun 'help | less'\r\nto get started.\r\n\n");
     }
 
 //    console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);

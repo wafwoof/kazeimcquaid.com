@@ -36,6 +36,7 @@ body {
     font-size: 15px;
     color: #f0f0f0;
     background: #000000;
+    outline: 1px solid white;
 }
 
 .term .term_content {
