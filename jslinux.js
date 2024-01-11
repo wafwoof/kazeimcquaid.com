@@ -400,7 +400,6 @@ GraphicDisplay.prototype.onContextMenuHandler = function (ev)
 }
 
 /* Network support */
-
 function Ethernet(url)
 {
     try {
@@ -521,7 +520,7 @@ function start_vm(user, pwd)
             url = "root-riscv64.cfg";
     }
     url = get_absolute_url(url);
-    mem_size = (params["mem"] | 0) || 120; /* in mb */
+    mem_size = (params["mem"] | 0) || 128; /* in mb */
     cmdline = params["cmdline"] || "";
     cols = (params["cols"] | 0) || 80;
     rows = (params["rows"] | 0) || 30;
@@ -554,7 +553,7 @@ function start_vm(user, pwd)
         term.open(document.getElementById("term_container"),
                   document.getElementById("term_paste"));
         term.term_el.style.fontSize = font_size + "px";
-        term.write("+-+-+-+-+-+-+-+-+-+-+-+-+\r\n\nKazei McQuaid :)\r\nFullstack Developer\r\n-> kazmcquaid@gmail.com\r\n-> github.com/wafwoof\r\n\n(yes, this is a real comp-uter) Press the [ctrl]  key to walk around!\r\n\nRun 'uname -a'\r\nto get started.\r\n\n");
+        term.write("Kazei McQuaid :)\r\nFullstack Developer\r\n-> kazmcquaid@gmail.com\r\n-> github.com/wafwoof\r\n\nThis computer is real!\n\rOS: Linux 4.12.0-rc6\r\nCPU: Pentium (i586)\n\rRAM: 128 MB\n\rPress the [ctrl] key to  walk around the void.\r\nRun 'uname -a' to get    started.\r\n\n");
     }
 
 console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);
@@ -595,30 +594,6 @@ console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);
     Module.preRun = start;
 
     loadScript(vm_url, null);
-}
-
-function on_login()
-{
-    var login_wrap_el = document.getElementById("wrap");
-    var term_wrap_el = document.getElementById("term_wrap");
-    var form = document.getElementById("form");
-    var status = document.getElementById("status");
-    var user = form.user.value;
-    var pwd = form.password.value;
-
-    if (user.length <= 1) {
-        status.innerHTML = "User name must be provided";
-        return false;
-    }
-    
-    login_wrap_el.style.display = "none";
-    term_wrap_el.style.display = "block";
-    form.password.value = "";
-    form.user.value = "";
-    
-    start_vm(user, pwd);
-
-    return false;
 }
 
 (function() {
