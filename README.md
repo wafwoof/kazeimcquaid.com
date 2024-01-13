@@ -1,8 +1,31 @@
-# kazeimcquaid.com
+# kazei.dev
 
-Portfolio website for myself. Work in progress.
+## About
 
-Originaly written on January 9th, 2024.
+My portfolio site. Work in progress. 
+
+Computers are thought of as a tool, or an appliance, but each medium is the content for the next medium to come. Will computers be content? Or will they be interfaces to content?
+
+Originaly written on January 9th, 2024 in a couple hours as a challenge. The idea is to combine my love for Linux/Unix with my recent spat of 3d web development. To save time I glued JSLinux to Aframe with the dom-to-image library. The result is a 3d terminal that can functionally run Linux in a game-engine-like experience. 
+
+Tech being used:
+
+- [**Three.js**](https://threejs.org/)
+    - wrapper for WebGL
+- [**Aframe**](https://aframe.io/)
+    - wrapper for Three.js with some WebAR/WebVR features
+- [**JSLinux**](https://bellard.org/jslinux/)
+    - a javascript x86/RISCV emulator
+
+## TODO
+
+- [ ] Remove flickering from texture swapping incorrectly.
+    - [github discussion with good advice on this very issue](https://github.com/mrdoob/three.js/issues/9337)
+- [ ] Find a way to mount the filesystem and upload more files and programs.
+- [ ] Add an apartment environment to the scene.
+- [ ] Keyboard for mobile.
+- [ ] Get the JSLinux websocket networking working so we can use lynx.
+
 
 ## JSLinux README
 
