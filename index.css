@@ -2,10 +2,17 @@
     margin: 0;
     padding: 0;
 }
-
+/* loading animation? */
 .a-loader-title {
     color: black;
     background-color: white;
+}
+/* device-orientation-permission-ui */
+.a-dialog-button,
+.a-dialog-allow-button,
+.a-dialog-ok-button {
+    background-color: black !important;
+    color: white;
 }
 
 html, 
@@ -25,6 +32,9 @@ body {
 #term_container {
     max-width: 400px;
     max-height: 400px;
+}
+#term_wrap * {
+    overflow: hidden;
 }
 
 .term {
