@@ -22,14 +22,20 @@
             font-weight: 600;
         }
         body {
-            background-color: #e8e2df;
+            background-color: #d9d9d9;
+            display: flex;
+            flex-direction: column;
         }
         a {
             text-decoration: none;
             cursor: pointer;
         }
+        b {
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
         h1 {
-            font-size: 1em;
+            font-size: 1.1em;
         }
         h2 {
             font-size: 1.1em;
@@ -38,10 +44,16 @@
         header {
             padding: 20px;
         }
+        ul {
+            padding-left: 16px;
+        }
         .post {
-            margin: 0 auto;
+            align-self: center;
             max-width: 600px;
-            padding: 20px;
+            margin: 16px;
+            padding: 16px;
+            border: 2px solid black;
+            border-radius: 8px;
         }
         .post .date {
             font-size: 0.8em;
@@ -54,28 +66,97 @@
 <body>
     <header>
         <a href="/posts/">
-            <h1>kazei.dev / posts</h1>
+            <h1><a href="/">kazei.dev / </a><a href="/posts/"><u>posts</u></a></h1>
         </a>
     </header>
     <div class="post">
+        <h2>NOT SO BAD</h2>
+        <p class="date">2024-03-12 @19:15:07</p>
+        <p>
+            I need to relax or else I'm going to give myself a heart attack.
+        </p>
+        <br>
+        <p>Here's just generally a few things I've been working on:</p>
+        <ul>
+            <li>
+                shopify liquid theming
+                <ul>
+                    <li>
+                        Kinda fun I guess, idk just lots of small reworking.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                loragotchi
+                <ul>
+                    <li>
+                        A tomagotchi clone that has proximity based interactions. Pets could be automatically traded with other users
+                        when they are in close proximity to each other. Sorta like 3DS streetpass.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                house-sitting for boojee people
+                <ul>
+                    <li>
+                        Need to go home tomorrow.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                trying not to have a heart attack from stress
+            </li>
+            <li>
+                a pretty big project that I can't talk about just yet...
+                <ul>
+                    <li>
+                        ...but I am very excited! lots of vanilla JS and SCSS (interesting combo). The nesting and mobile queries in SCSS are so nice.
+                        I still quite like vanilla CSS, but maybe that's because I hate myself.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <br>
+        <p>
+            I will have more interesting things to say soon. Remember that things aren't so bad.
+        </p>
+    </div>
+    <div class="post">
         <h2>AV COMPANY</h2>
         <p class="date">2024-03-09 @00:03:13</p>
+        <p>I am the biggest fucking idiot of all time.</p>
         <p>
-            I am the biggest fucking idiot of all time. I worked for this company for a year-and-a-half before I put
+            I worked for <b>[COMPANY NAME REDACTED]</b> for a year-and-a-half before I put
             together that my coworkers were only just putting up with me and didn't were never going to invite me to anything.
-            Would I have wanted to? No, not really. I, just like anybody else, like to be invited to things. I weirdly obsess
-            over it a little bit, but do not actually want to hang out with anyone who invites me to things, at least not usually.
-            Perfect example; I got invited to hangout with a bunch of people tomorrow, accepted, and planned an excuse immediately.
-            Why would I do this? Because, if a conversation isn't about engineering or technology, I get so bored I can't focus.
-            If the internet has fried all of our attention-spans, then why are there no cool computer engineers like me to befriend?
-            The answer is: people like me are all rich by now and have no real friends either. People like Tony Fadell. Tony Fadell
-            definitely has friends you might say. How would he know? He's way too rich fulfilled by life to give a fuck about fake friends.
-            Meanwhile, being poor, your main get out of life is social, and I'm smart enough to realize nobody is capable of being my friend.
-            Or am I? It would seem like the opposite, seeing as how long it took me to realize that nobody likes me except smart people.
+            Would I have wanted to hangout with them? No, probably not. I, just like anybody else, like to be invited to things... But I am pretty
+            uncomfortable in 75% of social situations. Why? Over and over, my friends have left me because of one reason or
+            another, but it's almost always related to me not handling a social situation properly. Working at <b>[COMPANY NAME REDACTED]</b> 
+            taught me a lot. I met new people (at the time), I wrote an iMessage interface (one of the 
+            first of it's kind before beeper became a thing), I've operated shows for Dell Technologies, I've worked in the biggest property.
+            Basically: I climbed the ladder pretty quickly. Eventually got an opportunity to work as a programmer in their XR (eXtended Reality)
+            / webdev division... for the same amount of money as my AV work. Needless to say; when an opportunity came to run, I took it.
         </p>
         <br>
         <p>
-            As I type this I get less and less inteligable so this is where I will wrap it up.
+            I was the best employee that company had ever seen. I quite literally could do it all, and was working to improve systems in the company,
+            but nobody cared. I was a tool to accomplish a job under-budget. They took advantage of me somewhat during a vulnerable time in my life.
+            One day my boss took met me for a drink, and he told me that when I left, my coworkers would not remain my friends. I didn't believe him, 
+            and I was wrong. He told me exactly what I needed to hear, but there was no way I could accept it at the time. And now that I have left
+            the company, it's so obvious in hindsight.
+        </p>
+        <br>
+        <p>
+            There are good people in the world, but people change.
+        </p>
+        <p>
+            My friend who had brought me into the company, denied me fair treatment because
+            of financial/social reasons. My boss's boss was a god damned liar, he promised me raises and what not in exchange for taking certain jobs,
+            but he would then run from me in the warehouse, not answer calls, etc. I was in a bad spot and still did right by the people around me
+            whenever I could. It didn't matter. Maybe I gained a reputation, but one of being cheap and easy to take advantage of.
+        </p>
+        <br>
+        <p>
+            It's late as hell and I'm tired. Good night moon.
         </p>
     </div>
 </body>
