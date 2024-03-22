@@ -553,7 +553,7 @@ function start_vm(user, pwd)
         term.open(document.getElementById("term_container"),
                   document.getElementById("term_paste"));
         term.term_el.style.fontSize = font_size + "px";
-        term.write("Kazei McQuaid :)\r\nFullstack Developer\r\n-> kaz@nietzschelabs.com\r\n-> github.com/wafwoof\r\n\nThis computer is real!\n\rOS: Linux 4.12.0-rc6\r\nCPU: Pentium (i586)\n\rRAM: 128 MB\n\rPress the [ctrl] key to  walk around the void.\r\nRun 'uname -a' to get    started.\r\n\n");
+        term.write("Kazei McQuaid :)\r\n\nFullstack Developer\r\n- kaz@nietzschelabs.com\r\n- github.com/wafwoof\r\n49°14'13.7 / 123°05'38.3\r\n\nThis computer is real!\n\n\rPress the [ctrl] key to  toggle walking/typing,\r\nor run 'uname -a' to get started.\r\n\n");
     }
 
 console.log("cpu=" + cpu + " url=" + url + " mem=" + mem_size);

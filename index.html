@@ -39,7 +39,7 @@
                 function updateScreenTexture(texture) {
                     if (texture === undefined || texture === '') {
                         screenshot = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wYAAsQB8mRIF3cAAAAASUVORK5CYII==';
-                        console.error("undefined or empty screenshot");
+                        console.warn("undefined or empty screenshot");
                     }
                     const new_texture = texture_loader.load(texture);
                     // Wrap new texture onto monitor screen mesh & make it emit light
@@ -76,8 +76,11 @@
                         wasd_enabled = true;
                     }
                 }
+                if (event.code === 'KeyF') {
+                    event.preventDefault();
+                    return false;
+                }
             });
-
         }
     });
 </script>
