@@ -476,7 +476,7 @@ function start_vm(user, pwd)
         script.onload = script.onreadystatechange = function() { 
             // attach to both events for cross browser finish detection:
             if ( !done && (!this.readyState ||
-                           this.readyState == "loaded" || this.readyState == "complete") ) {
+                            this.readyState == "loaded" || this.readyState == "complete") ) {
                 done = true;
                 if (f) {
                     f();
@@ -551,7 +551,7 @@ function start_vm(user, pwd)
         console.log("cols=" + cols + " rows=" + rows);
         term = new Term(cols, rows, term_handler, 10000);
         term.open(document.getElementById("term_container"),
-                  document.getElementById("term_paste"));
+                    document.getElementById("term_paste"));
         term.term_el.style.fontSize = font_size + "px";
         term.write("Kazei McQuaid :)\r\n\nFullstack Developer\r\n- kaz@nietzschelabs.com\r\n- github.com/wafwoof\r\n49°14'13.7 / 123°05'38.3\r\n\nThis computer is real!\n\n\rPress the [ctrl] key to  toggle walking/typing,\r\nor run 'uname -a' to get started.\r\n\n");
     }
